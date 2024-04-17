@@ -1,6 +1,7 @@
 package fr.harvest.temptracking.domain;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -65,4 +66,17 @@ class SensorTest {
             assertEquals("HOT", sensor.determineState(51.0), "Sensor should be HOT at the new threshold of 50.0°C");
             assertEquals("COLD", sensor.determineState(19.0), "Sensor should be COLD at the new threshold of 20.0°C");
         }
+
+    @Test
+    @Disabled
+    void testUpdateStateThresholds1 () {
+        // given
+        final double givenTemperature1 = 50.0;
+        final double givenTemperature2 = 20.0;
+        // when
+        sensor.updateStateThresholds(50.0, 20.0);
+        // then
+        assertEquals("HOT", sensor.determineState(51.0), "Sensor should be HOT at the new threshold of 50.0°C");
+        assertEquals("COLD", sensor.determineState(19.0), "Sensor should be COLD at the new threshold of 20.0°C");
+    }
     }
