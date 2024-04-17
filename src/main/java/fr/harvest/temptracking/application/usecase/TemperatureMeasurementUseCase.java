@@ -9,10 +9,11 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Service
 @AllArgsConstructor
 public class TemperatureMeasurementUseCase {
-    private Sensor sensor;
-    private TemperatureCaptor temperatureCaptor;
+    private final Sensor sensor;
+    private final TemperatureCaptor temperatureCaptor;
 
     public String execute() {
 
