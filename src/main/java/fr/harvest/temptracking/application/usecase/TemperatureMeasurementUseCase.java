@@ -15,9 +15,12 @@ public class TemperatureMeasurementUseCase {
     private TemperatureCaptor temperatureCaptor;
 
     public String execute() {
-        return null;
+
+        String state = sensor.determineState(temperatureCaptor.getTemperature());
+        return state;
     }
 
     public void setThresholds(double hot, double cold) {
+        sensor.updateStateThresholds(hot, cold);
     }
 }

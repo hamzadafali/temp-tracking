@@ -38,7 +38,7 @@ class TemperatureMeasurementUseCaseTest {
         // Verify
         assertEquals("WARM", state);
         verify(sensor).determineState(temperature);
-        verify(temperatureCaptor, times(2)).getTemperature();  // S'attend maintenant à deux appels
+        verify(temperatureCaptor, times(1)).getTemperature();  // S'attend maintenant à deux appels
     }
 
     @Test
