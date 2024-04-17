@@ -5,13 +5,15 @@ public class Sensor {
 
     private SensorState state;
 
-    public Sensor(double v, double v1) {
+    public Sensor(double hotThreshold, double coldThreshold) {
+        this.state = new SensorState(hotThreshold, coldThreshold);
     }
 
-    public String determineState(double givenTemperature1) {
-        return null;
+    public String determineState(double temperature) {
+        return state.determineState(temperature);
     }
 
-    public void updateStateThresholds(double v, double v1) {
+    public void updateStateThresholds(double hot, double cold) {
+        state.updateThresholds(hot, cold);
     }
 }
