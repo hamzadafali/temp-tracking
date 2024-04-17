@@ -1,6 +1,5 @@
 package fr.harvest.temptracking.application.usecase;
 
-import fr.harvest.temptracking.application.infrastrecture.DataBaseAdapter;
 import fr.harvest.temptracking.domain.TemperatureHistory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,15 +16,15 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class HistoricalUseCaseTest {
 
-    private DataBaseAdapter dataBaseAdapter;
+    private fr.harvest.temptracking.application.usecase.DatabaseAdapter dataBaseAdapter;
     private HistoricalUseCase  useCase;
 
     @BeforeEach
     void setUp() {
         // Mock the dependencies
-        dataBaseAdapter = mock(DataBaseAdapter.class);
+        dataBaseAdapter = mock(fr.harvest.temptracking.application.usecase.DatabaseAdapter.class);
         // Initialize the use case with the mocked dependencies
-        useCase = new HistoricalUseCase();
+        useCase = new HistoricalUseCase(dataBaseAdapter);
     }
 
     @Test
