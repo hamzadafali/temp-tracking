@@ -1,11 +1,17 @@
 package fr.harvest.temptracking.application.usecase;
 
+import fr.harvest.temptracking.application.infrastrecture.DataBaseAdapter;
 import fr.harvest.temptracking.domain.Sensor;
+import fr.harvest.temptracking.domain.TemperatureHistory;
 import fr.harvest.temptracking.domain.port.TemperatureCaptor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -15,11 +21,13 @@ class TemperatureMeasurementUseCaseTest {
     private Sensor sensor;
     private TemperatureCaptor temperatureCaptor;
     private TemperatureMeasurementUseCase useCase;
+    private DataBaseAdapter dataBaseAdapter;
 
     @BeforeEach
     void setUp() {
         // Mock the dependencies
         sensor = mock(Sensor.class);
+        dataBaseAdapter = mock(DataBaseAdapter.class);
         temperatureCaptor = mock(TemperatureCaptor.class);
         // Initialize the use case with the mocked dependencies
         useCase = new TemperatureMeasurementUseCase(sensor, temperatureCaptor);
