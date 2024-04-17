@@ -24,7 +24,7 @@ class TemperatureMeasurementUseCaseTest {
         dataBaseAdapter = mock(fr.harvest.temptracking.application.usecase.DatabaseAdapter.class);
         temperatureCaptor = mock(TemperatureCaptor.class);
         // Initialize the use case with the mocked dependencies
-        useCase = new TemperatureMeasurementUseCase(sensor, temperatureCaptor);
+        useCase = new TemperatureMeasurementUseCase(sensor, temperatureCaptor, dataBaseAdapter);
     }
 
     @Test

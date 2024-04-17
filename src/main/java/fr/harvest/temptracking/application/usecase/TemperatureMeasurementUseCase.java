@@ -15,10 +15,12 @@ import java.util.Set;
 public class TemperatureMeasurementUseCase {
     private final Sensor sensor;
     private final TemperatureCaptor temperatureCaptor;
+    private final fr.harvest.temptracking.application.usecase.DatabaseAdapter databaseAdapter;
 
     public String execute() {
 
         String state = sensor.determineState(temperatureCaptor.getTemperature());
+        databaseAdapter.saveTemperatureHistory(new TemperatureHistory(temperatureCaptor.getTemperature(), LocalDateTime.now()));
         return state;
     }
 
